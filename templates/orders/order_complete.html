@@ -1,0 +1,174 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+
+        <main class="content">
+            <!-- BEGIN DETAIL MAIN BLOCK -->
+            <div class="detail-block detail-block-checkout">
+                <div class="wrapper">
+                    <div class="detail-block__content">
+                        <h1>Thank you !!! </h1>
+                        <ul class="bread-crumbs">
+                            <li class="bread-crumbs__item">
+                                <a href="#" class="bread-crumbs__link">Home</a>
+                            </li>
+                            <li class="bread-crumbs__item">
+                                <a href="#" class="bread-crumbs__link">Shop</a>
+                            </li>
+                            <li class="bread-crumbs__item">Thank you !!</li>
+                        </ul>
+                        <div class="detail-block__items">
+                            <div class="detail-block__item">
+                                <div class="detail-block__item-icon">
+                                    <img data-src="img/main-text-decor.svg"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    <i class="icon-step1"></i>
+                                </div>
+                                <div class="detail-block__item-info">
+                                    <h6>Step 1</h6>
+                                    Order details
+                                </div>
+                            </div>
+                            <div class="detail-block__item">
+                                <div class="detail-block__item-icon">
+                                    <img data-src="img/main-text-decor.svg"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    <i class="icon-step2"></i>
+                                </div>
+                                <div class="detail-block__item-info">
+                                    <h6>Step 2</h6>
+                                    Payment method
+                                </div>
+                            </div>
+                            <div class="detail-block__item">
+                                <div class="detail-block__item-icon">
+                                    <img data-src="img/main-text-decor.svg"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    <i class="icon-step3"></i>
+                                </div>
+                                <div class="detail-block__item-info">
+                                    <h6>Step 3</h6>
+                                    Finish!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- DETAIL MAIN BLOCK EOF   -->
+            <!-- BEGIN CHECKOUT -->
+            <div class="checkout checkout-step3">
+                <div class="wrapper">
+                    <div class="checkout-content">
+                        <div class="checkout-purchase checkout-form">
+                            <h4>
+                                Thnak you <br>
+                                for your purchase!
+                            </h4>
+                            <p> Your order has been Confirmed. </p>
+                            <ul class="checkout-purchase__list">
+                                <li><span>Full Name:</span>{{order.full_name}}</li>
+                                <li><span>Full Address: </span>{{order.full_address}}</li>
+                                <li><span>Phone number:</span>{{order.phone}}</li>
+                                {% if order.note %}
+                                <li><span>Order Note:</span>{{order.note}}</li>
+                                {% endif %}
+
+                                <li><span>Order number</span>{{order_number}}</li>
+                                <li><span>Transaction ID</span>{{transID}}</li>
+                            </ul>
+                            <a href="#" class="checkout-purchase__link">print a document -</a>
+                        </div>
+                        <div class="checkout-info">
+                            <div class="checkout-order">
+                                <h5>Your Order</h5>
+                                {% for ordered_product in ordered_products%}
+                                <div class="checkout-order__item">
+                                    <a href="#" class="checkout-order__item-img">
+                                        <img data-src="{{ordered_product.product.image.url}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    </a>
+                                    <div class="checkout-order__item-info">
+                                        <a class="title6" href="#">{{ordered_product.product.product_name}}<span>x2</span></a>
+                                        <span class="checkout-order__item-price">Rs.{{ordered_product.product.discount_price}}</span>
+                                        <span class="checkout-order__item-num">SKU: IN1203</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="cart-bottom__total">
+                                <div class="cart-bottom__total-goods">
+                                    Sub Total:
+                                    <span>{{subtotal}}</span>
+                                </div>
+                                <div class="cart-bottom__total-promo">
+                                    Tax(13% Vat)
+                                    <span>{{tax}}</span>
+                                </div>
+
+                                <div class="cart-bottom__total-num">
+                                    Grand Total:
+                                    <span>Rs{{grand_total}}</span>
+                                </div>
+                                <a href="{% url 'store' %}" class="btn btn-success">Shop More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+            </div>
+            <!-- CHECKOUT EOF   -->
+            <!-- BEGIN INSTA PHOTOS -->
+            <div class="insta-photos">
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+            </div>
+            <!-- INSTA PHOTOS EOF   -->
+
+        </main>
+
+
+
+
+{% endblock %}

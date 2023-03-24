@@ -1,0 +1,81 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+        <main class="content">
+            <!-- BEGIN DETAIL MAIN BLOCK -->
+            {% include 'includes/alerts.html' %}
+            <div class="detail-block detail-block_margin">
+                <div class="wrapper">
+                    <div class="detail-block__content">
+                        <h1>My profile</h1>
+                        <ul class="bread-crumbs">
+                            <li class="bread-crumbs__item">
+                                <a href="#" class="bread-crumbs__link">Home</a>
+                            </li>
+                            <li class="bread-crumbs__item">My profile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- DETAIL MAIN BLOCK EOF   -->
+            <!-- BEGIN PROFILE -->
+            <div class="profile">
+                <div class="wrapper">
+                    <div class="profile-content">
+                        <div class="profile-aside">
+
+                            <div class="profile-aside__viewed">
+                                <h5>You have viewed</h5>
+
+                            {% for product in new_product %}
+                                <div class="profile-aside__viewed-item">
+                                    <a href="#" class="profile-aside__viewed-item-img">
+                                        <img data-src="{{product.image.url}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    </a>
+                                    <div class="profile-aside__viewed-item-info">
+                                        <a href="#" class="profile-aside__viewed-item-title">{{product.product_name}}</a>
+                                        <span class="profile-aside__viewed-item-price">$200.95</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+
+                        <div class="profile-main">
+                            <div class="tab-wrap">
+                            {% include 'includes/dashboard_header.html' %}
+
+        <div class="col-md-12">
+            <div class="col-md-6">
+				<div class="card" style="text-align:center;">
+					<div class="card-body">
+						<h5 class="card-title">Total Orders</h5>
+						<h4>{{orders_count}}</h4>
+						<a href="{% url 'my_order' %}">View Orders</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card" style="text-align:center;">
+					<div class="card-body">
+						<img src="{{ userprofile.profile_picture.url }}" alt="User Profile Picture" width="50" height="50" style="border-radius:50%;">
+						<p class="mb-0">{{user.email}}</p>
+						<p>{{user.phone_number}}</p>
+					</div>
+				</div>
+			</div>
+        </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+            </div>
+        </main>
+
+{% endblock %}

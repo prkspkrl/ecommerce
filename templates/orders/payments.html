@@ -1,0 +1,285 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+    <!-- Replace "TEST" with your own sandbox Business account app client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AT2pTyHnVJE2oH08xbY1pAIMRTRnHiApcAhwC0aamrblg1YFq6vt09IATcyffoK2n0NGsdrOPucVHpF8&currency=USD"></script>
+
+
+
+            <div class="detail-block detail-block-checkout">
+                <div class="wrapper">
+                    <div class="detail-block__content">
+                        <h1>Payments</h1>
+                        <ul class="bread-crumbs">
+                            <li class="bread-crumbs__item">
+                                <a href="#" class="bread-crumbs__link">Home</a>
+                            </li>
+                            <li class="bread-crumbs__item">
+                                <a href="#" class="bread-crumbs__link">Shop</a>
+                            </li>
+                            <li class="bread-crumbs__item">Payments</li>
+                        </ul>
+                        <div class="detail-block__items">
+                            <div class="detail-block__item">
+                                <div class="detail-block__item-icon">
+                                    <img data-src="img/main-text-decor.svg"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    <i class="icon-step1"></i>
+                                </div>
+                                <div class="detail-block__item-info">
+                                    <h6>Step 1</h6>
+                                    Order details
+                                </div>
+                            </div>
+                            <div class="detail-block__item">
+                                <div class="detail-block__item-icon">
+                                    <img data-src="img/main-text-decor.svg"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    <i class="icon-step2"></i>
+                                </div>
+                                <div class="detail-block__item-info">
+                                    <h6>Step 2</h6>
+                                    Payment method
+                                </div>
+                            </div>
+                            <div class="detail-block__item detail-block__item-inactive">
+                                <div class="detail-block__item-icon">
+                                    <img data-src="img/main-text-decor2.svg"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    <i class="icon-step3"></i>
+                                </div>
+                                <div class="detail-block__item-info">
+                                    <h6>Step 3</h6>
+                                    Finish!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- DETAIL MAIN BLOCK EOF   -->
+
+
+            <!-- BEGIN CHECKOUT -->
+            <div class="checkout checkout-step2">
+                <div class="wrapper">
+                    <div class="checkout-content">
+                        <div class="checkout-payment checkout-form">
+                            <h4>Payment Methods</h4>
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+
+
+
+
+
+                            <div class="checkout-payment__item active">
+                                <label>Billing address</label>
+                                <div class="checkout-payment__item-content">
+                                    <div class="box-field">
+                                        <span>Name: {{order.full_name}}</span>
+                                        <span>Phone Number: {{order.phone}}</span>
+                                        <span>Email Address: {{order.email}}</span>
+                                        <span>Full Address: {{order.full_address}}</span>
+                                        {% if order.order_note %}
+                                        <b><span>Full Address: {{order.order_note}}</span></b>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="checkout-buttons">
+                                <a href="#" class="btn btn-grey btn-icon"> <i class="icon-arrow"></i> back</a>
+                                <a href="#" class="btn btn-icon btn-next">next <i class="icon-arrow"></i></a>
+                            </div>
+                        </div>
+                        <div class="checkout-info">
+                            <div class="checkout-order">
+                                <h5>Your Order</h5>
+                                {% for cart_item in cart_items %}
+                                <div class="checkout-order__item">
+                                    <a href="#" class="checkout-order__item-img">
+                                        <img data-src="{{cart_item.product.image.url}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    </a>
+                                    <div class="checkout-order__item-info">
+                                        <a class="title6" href="#">{{cart_item.product.product_name}}<span>x{{cart_item.quantity}}</span></a>
+                                        <span class="checkout-order__item-price">{{cart_item.product.discount_price}}</span>
+                                        <span class="checkout-order__item-num">SKU: IN1203</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="cart-bottom__total">
+                                <div class="cart-bottom__total-goods">
+                                    Goods on
+                                    <span>{{total}}</span>
+                                </div>
+                                <div class="cart-bottom__total-promo">
+                                    Tax
+                                    <span>{{tax}}</span>
+                                </div>
+                                <div class="cart-bottom__total-delivery">
+                                    Delivery <span class="cart-bottom__total-delivery-date"></span>
+                                    <span>Free</span>
+                                </div>
+                                <div class="cart-bottom__total-num">
+                                    Grand total:
+                                    <span>{{grand_total}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+            </div>
+            <!-- CHECKOUT EOF   -->
+            <!-- BEGIN INSTA PHOTOS -->
+
+            <div class="insta-photos">
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+                <a href="#" class="insta-photo">
+                    <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
+                        alt="">
+                    <div class="insta-photo__hover">
+                        <i class="icon-insta"></i>
+                    </div>
+                </a>
+            </div>
+            <!-- INSTA PHOTOS EOF   -->
+<!--orderData = details-->
+
+
+<script>
+
+// csrt_token javascript
+function getCookie(name) {
+		let cookieValue = null;
+		if (document.cookie && document.cookie !== '') {
+			const cookies = document.cookie.split(';');
+			for (let i = 0; i < cookies.length; i++) {
+				const cookie = cookies[i].trim();
+				// Does this cookie string begin with the name we want?
+				if (cookie.substring(0, name.length + 1) === (name + '=')) {
+					cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+					break;
+				}
+			}
+		}
+		return cookieValue;
+	}
+
+
+
+
+ 	var amount = "{{ grand_total }}"
+ 	var url = "{% url 'payments' %}"
+ 	var csrftoken = getCookie('csrftoken');
+	var orderID = "{{order.order_number}}"
+	var payment_method = 'PayPal'
+	var redirect_url = "{% url 'order_complete' %}"
+
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: amount,
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+
+
+                sendData();
+                          function sendData(){
+                            fetch(url, {
+                            method : "POST",
+                            headers: {
+                                "Content-Type":"application/json",
+                                "X-CSRFToken": csrftoken,
+                            },
+                            body: JSON.stringify({
+                            orderID:orderID,
+                            transID:orderData.id,
+                            payment_method:payment_method,
+                            status:orderData.status,
+                            }),
+
+                            })
+                            .then((response) => response.json())
+                            .then((data) => {
+                             console.log('success: ',data);
+                             console.log('Transaction Complete: ');
+                            window.location.href = redirect_url + '?order_number='+data.order_number+'&payment_id='+data.transID;
+                            });
+
+                          }
+
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+
+                    // Successful capture! For demo purposes:
+
+// Replace the above to show a success message within this page, e.g.
+// const element = document.getElementById('paypal-button-container');
+// element.innerHTML = '';
+// element.innerHTML = '<h3>Thank you for your payment!</h3>';
+// Or go to another URL:  actions.redirect('thank_you.html');
+{% endblock %}

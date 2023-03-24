@@ -1,0 +1,98 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+        <main class="content">
+            <!-- BEGIN DETAIL MAIN BLOCK -->
+            {% include 'includes/alerts.html' %}
+            <div class="detail-block detail-block_margin">
+                <div class="wrapper">
+                    <div class="detail-block__content">
+                        <h1>My profile</h1>
+                        <ul class="bread-crumbs">
+                            <li class="bread-crumbs__item">
+                                <a href="#" class="bread-crumbs__link">Home</a>
+                            </li>
+                            <li class="bread-crumbs__item">My profile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- DETAIL MAIN BLOCK EOF   -->
+            <!-- BEGIN PROFILE -->
+            <div class="profile">
+                <div class="wrapper">
+                    <div class="profile-content">
+                        <div class="profile-aside">
+
+                            <div class="profile-aside__viewed">
+                                <h5>You have viewed</h5>
+
+                            {% for product in new_product %}
+                                <div class="profile-aside__viewed-item">
+                                    <a href="#" class="profile-aside__viewed-item-img">
+                                        <img data-src="{{product.image.url}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                    </a>
+                                    <div class="profile-aside__viewed-item-info">
+                                        <a href="#" class="profile-aside__viewed-item-title">{{product.product_name}}</a>
+                                        <span class="profile-aside__viewed-item-price">$200.95</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="profile-main">
+                            <div class="tab-wrap">
+                            {% include 'includes/dashboard_header.html' %}
+                                <div class="box-tab-cont">
+                                    <div class="tab-cont" id="profile-tab_2">
+                                        <div class="profile-orders">
+                                            <div class="profile-orders__row profile-orders__row-head">
+                                                <div class="profile-orders__col">date</div>
+                                                <div class="profile-orders__col">Delivery address</div>
+                                                <div class="profile-orders__col">amount</div>
+                                                <div class="profile-orders__col">Status</div>
+                                            </div>
+                                            {% for order in orders%}
+                                            <div class="profile-orders__item">
+                                                <div class="profile-orders__row">
+                                                    <div class="profile-orders__col"><span class="profile-orders__col-mob">date</span><span class="profile-orders__item-date">{{order.created_at}}</span></div>
+                                                    <div class="profile-orders__col"><span class="profile-orders__col-mob">Delivery address</span><span class="profile-orders__item-addr">{{order.full_address}}</span></div>
+                                                    <div class="profile-orders__col"><span class="profile-orders__col-mob">amount</span><span class="profile-orders__item-price">Rs.{{order.order_total}}</span></div>
+                                                    <div class="profile-orders__col">
+                                                        <span class="profile-orders__col-mob">Status</span>
+                                                        <span class="profile-orders__col-onway">{{order.status}}</span>
+                                                        <span class="profile-orders__col-btn"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-orders__content">
+                                                    <ul>
+                                                        <li>Foundation Beshop<span>$401.90</span></li>
+                                                        <li>Hair mask with oat extract<span>$125.95</span></li>
+                                                        <li>Spray balm with oat extract<span>$60.95</span></li>
+                                                        <li>Payment Methods:<span>Сredit card: **** **** **** 1633</span></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+            </div>
+        </main>
+
+{% endblock %}
